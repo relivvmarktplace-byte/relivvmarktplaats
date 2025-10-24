@@ -21,7 +21,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from dotenv import load_dotenv
 from pathlib import Path
-from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
+from import stripe
 from reportlab.lib.pagesizes import letter, A4
 from reportlab.lib.units import inch
 from reportlab.lib import colors
@@ -83,7 +83,7 @@ else:
 # Stripe Payment Client initialization
 STRIPE_API_KEY = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
 stripe_checkout = None
-
+stripe.api_key = STRIPE_API_KEY
 # Frontend URL for email links
 FRONTEND_URL = os.environ.get('FRONTEND_URL', 'https://relivv-marketplace-1.preview.emergentagent.com')
 
